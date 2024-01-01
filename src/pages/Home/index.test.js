@@ -1,5 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
+import EventList from "../../containers/Events";
+import PeopleCard from "../../components/PeopleCard";
+import EventCard from '../../components/EventCard'
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -29,16 +32,44 @@ describe("When Form is created", () => {
 
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
+  it("a list of events is displayed", async () => {
+    render(<EventList />);
+    await screen.findAllByText('Catégories')
   })
-  it("a list a people is displayed", () => {
-    // to implement
+  it("a list a people is displayed", async () => {
+    render(
+      <PeopleCard
+        imageSrc="http://src-image"
+        imageAlt="image-alt-text"
+        name="test name"
+        position="test position"
+      />
+    );
+    const nameElement = screen.getByText(/test name/);
+    expect(nameElement).toBeInTheDocument();
   })
   it("a footer is displayed", () => {
-    // to implement
-  })
-  it("an event card, with the last event, is displayed", () => {
-    // to implement
+    render(
+      <EventCard
+        imageSrc="http://src-image"
+        imageAlt="image-alt-text"
+        title="test event"
+        label="test label"
+        date={new Date("2022-04-01")}
+        small
+      />
+    );
+    const cardElement = screen.getByTestId("card-testid");
+    expect(cardElement.className.includes("EventCard--small")).toEqual(true);
+    });
+  it("an event card, with the last event, is displayed", async () => {
+    render(
+      <EventCard 
+        date = {new Date('2022-08-29T20:28:45.744Z')}
+      />
+    );
+    await screen.findByText('août');
+/*     const dateElement = screen.getByTestId('card-testid')
+    expect(dateElement).toBe('2022-08-29T20:28:45.744Z') */
   })
 });
