@@ -31,26 +31,11 @@ export const DataProvider = ({ children }) => {
     getData();
   });
 
-// Find most recent event
-const findMostRecentEvent = () => {
-  if (data && data.events && data.events.length > 0) {
-    return data.events.reduce((mostRecentEvent, event) => {
-      const eventDate = new Date(event.date)
-      const mostRecentDate = new Date(mostRecentEvent.date)
-      return eventDate > mostRecentDate ? event : mostRecentEvent
-    }, data.events[0])
-  }
-  return null;
-};
-
-const mostRecentEvent = findMostRecentEvent()
-
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         data,
-        mostRecentEvent,
         error,
       }}
     >

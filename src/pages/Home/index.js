@@ -13,8 +13,15 @@ import Modal from '../../containers/Modal'
 import { useData } from '../../contexts/DataContext'
 
 const Page = () => {
-  const { mostRecentEvent } = useData()
-
+  const { data } = useData()
+  const le = () => {
+    let ind = 0
+    for (let i = 0; i < data?.events.length; i += 1) {
+      if (data?.events[i].date > data?.events[ind].date) {ind = i}
+    }
+    return data?.events[ind]  
+  }
+  const lastEvent = le()
   return (
     <>
       <header>
@@ -115,15 +122,13 @@ const Page = () => {
       <footer className="row">
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
-          {mostRecentEvent && (
             <EventCard
-              imageSrc={mostRecentEvent?.cover}
-              title={mostRecentEvent?.title}
-              date={new Date(mostRecentEvent?.date)}
+              imageSrc={lastEvent?.cover}
+              title={lastEvent?.title}
+              date={new Date(lastEvent?.date)}
               small
-              label={mostRecentEvent?.type}
+              label={lastEvent?.type}
             />
-          )}
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
