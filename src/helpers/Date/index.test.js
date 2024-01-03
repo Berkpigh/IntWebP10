@@ -13,7 +13,7 @@ describe("Date helper", () => {
         it("the function return juillet for 2022-07-08 as date", () => {
             const da2 = new Date('2022-07-08')
             expect(getMonth(da2)).toBe('juillet')
-            setTimeout(() => { }, 1000);
+            setTimeout(() => { }, 2000);
         });
         it("the function not return juillet for 2022-08-08 as date", () => {
             const da3 = new Date('2022-08-08')
