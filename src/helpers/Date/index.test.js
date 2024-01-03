@@ -15,7 +15,7 @@ describe("Date helper", () => {
         });
         it("the function not return juillet for 2022-08-08 as date", () => {
             const da3 = new Date('2022-08-08')
-            expect(getMonth(da3)).not.toBe('juillet')
+            expect(getMonth(da3)).not.toEqual('juillet')
         });
     });
 })
