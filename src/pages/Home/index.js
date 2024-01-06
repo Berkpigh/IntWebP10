@@ -24,14 +24,14 @@ const Page = () => {
   const lastEvent = le()
   return (
     <>
-      <header>
+      <header className="Pagemenu">
         <Menu />
       </header>
       <main>
         <section className="SliderContainer">
           <Slider />
         </section>
-        <section id='nos-services' className="ServicesContainer">
+        <section id='nos-services' className="ServicesContainer" data-testid='tousservercices' >
           <h2 className="Title">Nos services</h2>
           <p>Nous organisons des événements sur mesure partout dans le monde</p>
           <div className="ListContainer">
