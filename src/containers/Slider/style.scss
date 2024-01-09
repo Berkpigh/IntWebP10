@@ -36,7 +36,12 @@
         width: 16px;
         height: 16px;
         min-width: 0;
-        color: $primary;
+        color:  $primary;
+        &:checked {
+          width: 17px;
+          height: 17px;
+          accent-color: #4314ff;
+        }
       }
     }
     &__description {

@@ -11,9 +11,11 @@ const Slider = () => {
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
-  
+  //  let currentidx = 0;
+
   const nextCard = () => {
     setIndex((index + 1) % byDateDesc.length)
+  //  currentidx = index
   }
 
   useEffect(() => {
@@ -25,6 +27,7 @@ const Slider = () => {
 
   const handleInputClick = (radioIdx) => {
     setIndex(radioIdx);
+  //  currentidx = radioIdx
   };
 
   return (
@@ -53,7 +56,7 @@ const Slider = () => {
               key={`radio-${event.title.replace(/\\s+/g, '_')}`}
               type="radio"
               name="radio-button"
-              checked={index === radioIdx}
+              checked={radioIdx === index}
               onChange={() => handleInputClick(radioIdx)}
             />
           ))}

@@ -1,3 +1,15 @@
 .SelectTitle {
   color: white;
 }
+.pagneNumBold {
+  font-weight: 700;
+  font-size : 24px;
+  letter-spacing : .8rem;
+  color :chartreuse;
+  background: primary;
+}
+.pageNumNormal {
+  font-weight: 100;
+  font-size : 22px;
+  color :aliceblue;
+}
